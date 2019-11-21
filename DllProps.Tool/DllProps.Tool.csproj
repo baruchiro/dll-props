@@ -4,9 +4,10 @@
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp2.1</TargetFramework>
     
+    <RepositoryUrl>https://github.com/baruchiro/dll-props</RepositoryUrl>
     <PackAsTool>true</PackAsTool>
     <ToolCommandName>dll-props</ToolCommandName>
-    <PackageOutputPath>./nupkg</PackageOutputPath>
+    <PackageOutputPath>../</PackageOutputPath>
   </PropertyGroup>
 
 </Project>
