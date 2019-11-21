@@ -24,4 +24,4 @@ jobs:
     - name: Publish nuget
       run: |
         dotnet pack DllProps.Tool/DllProps.Tool.csproj
-        dotnet nuget push "DllProps.Tool/nupkg/*.nupkg" -s "github"
+        dotnet nuget push "*.nupkg" -s "github"
