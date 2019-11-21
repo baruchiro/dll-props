@@ -21,5 +21,5 @@ jobs:
       run: dotnet test
     - name: Publish nuget
       run: |
-        nuget pack DllProps.Tool/DllProps.Tool.csproj
-        nuget push "DllProps.Tool/DllPRops.Tool.nupkg" -s "https://nuget.pkg.github.com/baruchiro/index.json" -k ${{ secrets.GITHUB_TOKEN }}
+        dotnet pack DllProps.Tool/DllProps.Tool.csproj
+        dotnet push "DllProps.Tool/DllPRops.Tool.nupkg" -s "https://nuget.pkg.github.com/baruchiro/index.json" -k ${{ secrets.GITHUB_TOKEN }}
