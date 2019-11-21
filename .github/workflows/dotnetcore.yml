@@ -20,7 +20,7 @@ jobs:
     - name: Build with dotnet
       run: dotnet build --configuration Release
     - name: Test with dotnet
-      run: dontet test
+      run: dotnet test
     - name: Publish nuget
       run: |
         nuget source Add -Name "GitHub" -Source "https://nuget.pkg.github.com/baruchiro/index.json" -UserName baruchiro -Password ${{ secrets.GITHUB_TOKEN }}
