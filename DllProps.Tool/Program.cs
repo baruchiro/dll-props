@@ -13,7 +13,6 @@ namespace DllProps.Tool
             Console.WriteLine($"FileVersion: {info.FileVersion}");
             Console.WriteLine($"ProductVersion: {info.ProductVersion}");
             Console.WriteLine($"Description: {info.FileDescription}");
-            Console.WriteLine($"Product: {info.}");
         }
     }
 }
