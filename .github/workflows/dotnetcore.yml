@@ -24,5 +24,5 @@ jobs:
     - name: Publish nuget
       run: |
         nuget source Add -Name "GitHub" -Source "https://nuget.pkg.github.com/baruchiro/index.json" -UserName baruchiro -Password ${{ secrets.GITHUB_TOKEN }}
-        nuget pack DllPRops.Tool/DllPRops.Tool.csproj
+        nuget pack DllProps.Tool/DllProps.Tool.csproj
         nuget push "DllPRops.Tool.nupkg" -Source "GitHub"
