@@ -15,14 +15,11 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 3.0.101
-    - name: Setup NuGet.exe for use with actions
-      uses: NuGet/setup-nuget@255f46e14d51fbc603743e2aa2907954463fbeb9
     - name: Build with dotnet
       run: dotnet build --configuration Release
     - name: Test with dotnet
       run: dotnet test
     - name: Publish nuget
       run: |
-        nuget source Add -Name "GitHub" -Source "https://nuget.pkg.github.com/baruchiro/index.json" -UserName baruchiro -Password ${{ secrets.GITHUB_TOKEN }}
         nuget pack DllProps.Tool/DllProps.Tool.csproj
-        nuget push "DllPRops.Tool.nupkg" -Source "GitHub"
+        nuget push "DllProps.Tool/DllPRops.Tool.nupkg" -s "https://nuget.pkg.github.com/baruchiro/index.json" -k ${{ secrets.GITHUB_TOKEN }}
