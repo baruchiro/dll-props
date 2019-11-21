@@ -1,0 +1,28 @@
+name: .NET Core
+
+on:
+  push:
+    branches: master
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 2.2.108
+    - name: Setup NuGet.exe for use with actions
+      uses: NuGet/setup-nuget@255f46e14d51fbc603743e2aa2907954463fbeb9
+    - name: Build with dotnet
+      run: dotnet build --configuration Release
+    - name: Test with dotnet
+      run: dontet test
+    - name: Publish nuget
+      run: |
+        nuget source Add -Name "GitHub" -Source "https://nuget.pkg.github.com/baruchiro/index.json" -UserName baruchiro -Password ${{ secrets.GITHUB_TOKEN }}
+        nuget pack DllPRops.Tool/DllPRops.Tool.csproj
+        nuget push "DllPRops.Tool.nupkg" -Source "GitHub"
