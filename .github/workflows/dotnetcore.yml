@@ -19,7 +19,9 @@ jobs:
       run: dotnet build --configuration Release
     - name: Test with dotnet
       run: dotnet test
+    - name: Setup nuget config
+      run: sed 's/GITHUB_TOKEN/${{ secrets.GITHUB_TOKEN }}/g' .nuget/.nuget.config > nuget.config
     - name: Publish nuget
       run: |
         dotnet pack DllProps.Tool/DllProps.Tool.csproj
-        dotnet nuget push "DllProps.Tool/nupkg/*.nupkg" -s "https://nuget.pkg.github.com/baruchiro/index.json" -k ${{ secrets.GITHUB_TOKEN }}
+        dotnet nuget push "DllProps.Tool/nupkg/*.nupkg" -s "github"
