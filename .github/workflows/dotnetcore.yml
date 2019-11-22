@@ -19,9 +19,11 @@ jobs:
       run: dotnet build --configuration Release
     - name: Test with dotnet
       run: dotnet test
-    - name: Setup nuget config
-      run: sed 's/GITHUB_TOKEN/${{ secrets.GITHUB_TOKEN }}/g' .nuget/.nuget.config > nuget.config
-    - name: Publish nuget
+    - name: Pack Nuget
+      run: dotnet pack DllProps.Tool/DllProps.Tool.csproj
+    - name: Publish nuget to Nuget.org
+      run: dotnet nuget push *.nupkg -k ${{ secrets.NUGET_TOKEN }} -s https://api.nuget.org/v3/index.json
+    - name: Publish nuget to Github
       run: |
-        dotnet pack DllProps.Tool/DllProps.Tool.csproj
+        sed 's/GITHUB_TOKEN/${{ secrets.GITHUB_TOKEN }}/g' .nuget/.nuget.config > nuget.config
         dotnet nuget push "*.nupkg" -s "github"
