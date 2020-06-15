@@ -1,0 +1,19 @@
+name: Pull Request status-check
+
+on: pull_request
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Build with dotnet
+      run: dotnet build --configuration Release
+    - name: Pack
+      run: dotnet pack DllProps.Tool/DllProps.Tool.csproj --configuration Release
+    - name: Install the tool
+      run: dotnet tool install --global --add-source . DllProps.Tool
+    - name: Run the Tool
+      run: dll-props DllProps.Tool/bin/Debug/netcoreapp2.1/DllProps.Tool.dll
