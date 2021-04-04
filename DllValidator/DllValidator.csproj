@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="docopt.net" Version="0.6.1.10" />
+    <PackageReference Include="docopt.net" Version="0.6.1.11" />
   </ItemGroup>
 
 </Project>
