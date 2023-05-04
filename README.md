@@ -1,3 +1,5 @@
+# This project looking for a new owner
+---
 # dll-props
 `dotnet` tool to get dll file properties.
 
