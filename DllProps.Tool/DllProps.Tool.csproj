@@ -10,5 +10,8 @@
     <PackageOutputPath>../</PackageOutputPath>
     <Version>3.0.0</Version>
   </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NETCore.App" Version="2.1.30" />
+  </ItemGroup>
 
 </Project>
